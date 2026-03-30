@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenanga - Admin Attendance</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container admin-container">
+        <h1>Kenanga</h1>
+        <p class="subtitle">Attendance Dashboard</p>
+
+        <div id="loginBox" class="login-box">
+            <h3>Admin Login</h3>
+            <input type="password" id="adminPin" placeholder="Enter Admin PIN">
+            <button onclick="adminLogin()">Login</button>
+            <p id="loginError" class="error hidden">Incorrect PIN</p>
+        </div>
+
+        <div id="adminPanel" class="hidden">
+
+            <div class="month-selector">
+                <label>Month:</label>
+                <select id="monthSelect" onchange="loadAttendance()"></select>
+                <label>Year:</label>
+                <select id="yearSelect" onchange="loadAttendance()"></select>
+            </div>
+
+            <div class="summary-section">
+                <h2>Monthly Summary</h2>
+                <div id="summaryTable"></div>
+            </div>
+
+            <div class="bonus-section">
+                <h2>Daily Bonus Settings</h2>
+                <div id="bonusSettings"></div>
+                <button onclick="saveBonusSettings()" class="save-btn">Save Bonus Settings</button>
+            </div>
+
+            <div class="records-section">
+                <h2>Attendance Records</h2>
+                <div id="recordsTable"></div>
+            </div>
+
+            <button onclick="exportCSV()" class="export-btn">Export CSV</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="admin-script.js"></script>
+</body>
+</html>

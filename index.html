@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenanga - Check In</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Kenanga</h1>
+        <p class="subtitle">Employee Check-In</p>
+
+        <div id="statusBanner" class="status-banner hidden"></div>
+
+        <div id="locationStatus" class="info-box">
+            <span class="spinner">⟳</span> Checking your location...
+        </div>
+
+        <div id="wifiStatus" class="info-box hidden"></div>
+
+        <div id="checkInForm" class="hidden">
+            <div class="input-group">
+                <label>Select Your Name:</label>
+                <select id="employeeName">
+                    <option value="">-- Select Name --</option>
+                    <option value="Anas Amrulloh">Anas Amrulloh</option>
+                    <option value="Dinda Ayu Putri">Dinda Ayu Putri</option>
+                    <option value="Evi Nurmala Dewi">Evi Nurmala Dewi</option>
+                    <option value="Farid Kurniadi">Farid Kurniadi</option>
+                </select>
+            </div>
+
+            <div id="alreadyCheckedIn" class="warning-box hidden">
+                ✓ You have already checked in today.
+            </div>
+
+            <button id="checkInBtn" class="checkin-btn">
+                <span>✓</span> Check In
+            </button>
+        </div>
+
+        <div id="successBox" class="success-box hidden">
+            <div class="success-icon">✓</div>
+            <h2 id="successName"></h2>
+            <p id="successTime"></p>
+            <p>Check-in recorded successfully!</p>
+        </div>
+
+        <div id="blockedBox" class="blocked-box hidden">
+            <div class="blocked-icon">✗</div>
+            <p id="blockedReason"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
