@@ -1,4 +1,4 @@
-const ADMIN_PIN = '1234'; // Change this
+const ADMIN_PIN = '1521'; // Change this
 
 const MONTH_NAMES = ['January','February','March','April','May','June',
                      'July','August','September','October','November','December'];
