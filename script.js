@@ -310,11 +310,18 @@ async function awardCoins(name) {
         const today = new Date().toLocaleDateString('en-GB');
         if (current.lastCheckIn === today) return null;
 
-        const yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
-        const yesterdayStr = yesterday.toLocaleDateString('en-GB');
+        // Get holidays from localStorage
+        const holidays = JSON.parse(localStorage.getItem('holidays') || '[]');
 
-        let newStreak = current.lastCheckIn === yesterdayStr ? (current.streak || 0) + 1 : 1;
+        // Find the last expected workday before today
+        const lastExpectedWorkday = getPreviousWorkday(new Date(), holidays);
+        const lastExpectedStr = lastExpectedWorkday.toLocaleDateString('en-GB');
+
+        // Streak continues if last check-in was on or after the last expected workday
+        const lastCheckInDate = current.lastCheckIn ? parseDate(current.lastCheckIn) : null;
+        const streakContinues = lastCheckInDate && lastCheckInDate >= lastExpectedWorkday;
+
+        let newStreak = streakContinues ? (current.streak || 0) + 1 : 1;
         if (newStreak > 6) newStreak = 1;
 
         const coinsEarned = newStreak;
@@ -330,5 +337,24 @@ async function awardCoins(name) {
     } catch (e) {
         console.log('Could not award coins:', e);
         return null;
+    }
+}
+
+function parseDate(dateStr) {
+    const parts = dateStr.split('/');
+    if (parts.length !== 3) return null;
+    return new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]));
+}
+
+function getPreviousWorkday(fromDate, holidays) {
+    const d = new Date(fromDate);
+    d.setDate(d.getDate() - 1);
+    while (true) {
+        const day = d.getDay();
+        const dateStr = d.toLocaleDateString('en-GB');
+        if (day !== 0 && day !== 6 && !holidays.includes(dateStr)) {
+            return d;
+        }
+        d.setDate(d.getDate() - 1);
     }
 }
