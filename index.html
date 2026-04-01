@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenanga Money Changer - Attendance</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Kenanga Money Changer</h1>
+        <p class="subtitle">Employee Attendance</p>
+
+        <div id="locationStatus" class="info-box">
+            <span class="spinner">⟳</span> Checking your location...
+        </div>
+
+        <div id="dailyCodeBox" class="daily-code-box hidden">
+            <p>Today's Check-In Code</p>
+            <div id="codeDisplay" class="code-display"></div>
+            <p class="code-hint">Code refreshes on every page reload</p>
+        </div>
+
+        <!-- Track Coins button moved to bottom -->
+        <a href="coins.html" class="track-coins-btn" style="display:none;">
+            <span class="gold-coin">●</span> Track Your Coins
+        </a>
+
+        <div id="shiftBadge" class="shift-badge hidden">
+            🗓️ Shift Day — Extra pay applies
+        </div>
+
+        <div id="checkInForm" class="hidden">
+            <div class="input-group">
+                <label>Your Name:</label>
+                <select id="employeeName">
+                    <option value="">-- Select Name --</option>
+                    <option value="Anas Amrulloh">Anas Amrulloh</option>
+                    <option value="Dinda Ayu Putri">Dinda Ayu Putri</option>
+                    <option value="Evi Nurmala Dewi">Evi Nurmala Dewi</option>
+                    <option value="Farid Kurniadi">Farid Kurniadi</option>
+                    <option value="Rendy Revaldy">Rendy Revaldy</option>
+                    <option value="Christian Winata">Christian Winata</option>
+                    <option value="Ikhwan Syafii">Ikhwan Syafii</option>
+                    <option value="Lia Rahmah">Lia Rahmah</option>
+                    <option value="Faisal">Faisal</option>
+                    <option value="Riyanto">Riyanto</option>
+                    <option value="Annisa Novitasari">Annisa Novitasari</option>
+                    <option value="Fatur Rohman">Fatur Rohman</option>
+                    <option value="Ananda Aditya Gunawan">Ananda Aditya Gunawan</option>
+                    <option value="M. Rizal Fahreji">M. Rizal Fahreji</option>
+                    <option value="Agus">Agus</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Enter Code:</label>
+                <input type="number" id="codeInput" placeholder="4-digit code">
+            </div>
+
+            <p id="codeError" class="error-text hidden">❌ Incorrect code. Please try again.</p>
+            <div id="alreadyCheckedIn" class="warning-box hidden"></div>
+
+            <button id="checkInBtn" class="checkin-btn hidden">↓ Check In</button>
+            <button id="checkOutBtn" class="checkout-btn hidden">↑ Check Out</button>
+        </div>
+
+        <div id="successBox" class="hidden">
+            <div class="success-icon">✓</div>
+            <h2 id="successName"></h2>
+            <p id="successAction"></p>
+            <p id="successTime"></p>
+            <p id="coinsEarned" style="color:#FFD700;font-weight:700;font-size:16px;margin-top:10px;"></p>
+            <a href="coins.html" style="display:inline-block;margin-top:15px;padding:12px 24px;background:#FFD700;color:#003366;border-radius:10px;font-weight:700;text-decoration:none;">🪙 Track your coins</a>
+        </div>
+
+        <div id="blockedBox" class="blocked-box hidden">
+            <div class="blocked-icon">✗</div>
+            <p id="blockedReason"></p>
+        </div>
+
+        <!-- Always visible at bottom -->
+        <a href="coins.html" class="track-coins-btn" style="margin-top:20px;">
+            <span class="gold-coin">●</span> Track Your Coins
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
